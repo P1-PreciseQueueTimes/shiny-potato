@@ -1,0 +1,22 @@
+<body onload="setup()">
+</body>
+{% extends "base.html" %}
+
+{% block content %}
+  <center>
+    {% if ask_for_adding %}
+      To let your co-workers know where you are please click here:
+      <form action="add_device" method="POST" role="form" class="form-horizontal">
+        <input type="hidden" name="mac" value="{{ mac }}">
+        <input type="hidden" name="email" value="{{ email }}">
+        <button type="submit" class="btn btn-default">I want to participate in this awesome tool</button>
+      </form>
+    {% else %}
+      {% if mac %}
+        Thanks for letting your co-workers know where they can contact you! :-)
+      {% else %}
+        We can't determine your MAC address. Are you in the correct network?
+      {% endif %}
+    {% endif %}
+  </center>
+{% endblock %}
